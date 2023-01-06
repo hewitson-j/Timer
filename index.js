@@ -30,11 +30,14 @@ const timerHoursDisplay = document.getElementById("timer-hours");
 
 const alerter = document.getElementById("alerter");
 
+const timesUp = document.getElementById("timesUp");
+
 // Counters for Timer
 let ts = 0;
 let tm = 0;
 let th = 0;
 let int2 = null;
+let alarmOn = null;
 
 // Start Timer
 function startTimer() {
@@ -42,6 +45,7 @@ function startTimer() {
   let inputMinutes = timerMinutesInput.value;
   let inputHours = timerHoursInput.value;
 
+  // EA
   if (inputMinutes == "Zelda") {
     alert("It's a secret to everybody.");
     response = prompt("Link... Open your eyes...");
@@ -115,11 +119,17 @@ function countdown() {
     timerHoursDisplay.textContent = "0";
     timerMinutesDisplay.textContent = "00";
     timerSecondsDisplay.textContent = "00";
+    timesUp.play();
+
     alerter.style.display = "block";
     timerCancelButtonDiv.style.display = "none";
     timerEndButton.style.display = "justify";
     clearInterval(int2);
     timerEndButtonDiv.style.display = "block";
+
+    alarmOn = setInterval(() => {
+      timesUp.currentTime = 0;
+    }, 10000);
   } else if (ts < 0 && tm > 0) {
     ts = 59;
     tm -= 1;
@@ -165,6 +175,9 @@ function resetTimer() {
   ts = 0;
   tm = 0;
   th = 0;
+  clearInterval(alarmOn);
+  timesUp.pause();
+  timesUp.currentTime = 0;
   timerCancelButtonDiv.style.display = "none";
   timerStartButtonDiv.style.display = "block";
   timerEndButtonDiv.style.display = "none";
