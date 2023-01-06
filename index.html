@@ -17,6 +17,7 @@
         <script src="index.js" defer></script>
     </head>
     <body>
+        <!-- Mode Select Interface -->
         <div id="mode">
             <label id="mode-label">Choose mode:</label>
             <br>
@@ -26,6 +27,8 @@
         </div>
 
         <audio id="timesUp" src="alarm.mp3" preload="auto"></audio>
+
+        <!-- Stopwatch Interface -->
         <div id="stopwatch-div">
             <div id="stopwatch-body">Stopwatch: 
                 <br>
@@ -41,6 +44,8 @@
         </div>
         <br>
         <br>
+
+        <!-- Countdown Timer Interface -->
         <div id="countdown-div">
             <div id="countdown-timer">
                 <div id="timer-body">
@@ -69,6 +74,35 @@
             </div>
             <div class="buttons" id="timer-end">
                 <input type="button" id="timer-stop-button" value="Stop Timer">
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <!-- Alarm Interface -->
+        <div id="alarm-div">
+            <div id="alarm-display"> Alarm:
+                <br>
+                <a id="alarm-hour">00</a><a id="alarm-colon">:</a><a id="alarm-minute">00</a> <a id="am-pm">AM</a>
+            </div>
+            <div id="alarm-inputs">
+                <label>Hour</label>
+                <input type="text" id="alarm-hour-input">
+                <label>Minute</label>
+                <input type="text" id="alarm-minute-input">
+                <select>
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                </select>
+            </div>
+            <div id="alarm-set">
+                <input type="button" id="alarm-start-button" value="Set Alarm">
+            </div>
+            <div id="alarm-cancel">
+                <input type="button" id="alarm-cancel-button" value="Cancel Alarm">
+            </div>
+            <div id="alarm-stop">
+                <input type="button" id="alarm-stop-button" value="Stop Alarm">
             </div>
         </div>
     </body>
