@@ -130,7 +130,7 @@ function countdown() {
 
     alarmOn = setInterval(() => {
       timesUp.currentTime = 0;
-    }, 10000);
+    }, 7500);
   } else if (ts < 0 && tm > 0) {
     ts = 59;
     tm -= 1;
