@@ -36,6 +36,7 @@ let tm = 0;
 let th = 0;
 let int2 = null;
 
+// Start Timer
 function startTimer() {
   let inputSeconds = timerSecondsInput.value;
   let inputMinutes = timerMinutesInput.value;
@@ -45,9 +46,19 @@ function startTimer() {
   inputMinutes = parseInt(inputMinutes);
   inputHours = parseInt(inputHours);
 
-  if (isNaN(inputSeconds) || isNaN(inputMinutes) || isNaN(inputHours)) {
+  if (isNaN(inputSeconds)) {
+    inputSeconds = 0;
+  }
+  if (isNaN(inputMinutes)) {
+    inputMinutes = 0;
+  }
+  if (isNaN(inputHours)) {
+    inputHours = 0;
+  }
+
+  if (inputHours == 0 && inputMinutes == 0 && inputSeconds == 0) {
     alert(
-      "Values not valid. Please make sure values are filled, and all numbers with no spaces."
+      "Time is empty or has invalid characters. Please put in a valid time. \n 1) At least one box must be filled with one number. \n 2) Only acceptable characters are numbers \n 3) No letters, spaces, or special characters allowed."
     );
     return;
   }
@@ -94,13 +105,14 @@ function countdown() {
     timerSecondsDisplay.textContent = "00";
     alerter.style.display = "block";
     timerCancelButtonDiv.style.display = "none";
-    timerEndButtonDiv.style.display = "block";
+    timerEndButton.style.display = "justify";
     clearInterval(int2);
+    timerEndButtonDiv.style.display = "block";
   } else if (ts < 0 && tm > 0) {
     ts = 59;
     tm -= 1;
     timerSecondsDisplay.textContent = ts;
-    if (ts < 10) {
+    if (tm < 10) {
       timerMinutesDisplay.textContent = "0" + tm;
     } else {
       timerMinutesDisplay.textContent = tm;
@@ -134,6 +146,24 @@ function cancelTimer() {
   timerHoursDisplay.textContent = "0";
   timerMinutesDisplay.textContent = "00";
   timerSecondsDisplay.textContent = "00";
+}
+
+// Reset Timer Button/Stop Alerting that time's up
+function resetTimer() {
+  ts = 0;
+  tm = 0;
+  th = 0;
+  timerCancelButtonDiv.style.display = "none";
+  timerStartButtonDiv.style.display = "block";
+  timerEndButtonDiv.style.display = "none";
+  timeInputDiv.style.display = "block";
+  timerSecondsInput.value = null;
+  timerMinutesInput.value = null;
+  timerHoursInput.value = null;
+  timerHoursDisplay.textContent = "0";
+  timerMinutesDisplay.textContent = "00";
+  timerSecondsDisplay.textContent = "00";
+  alerter.style.display = "none";
 }
 
 // Counters for Stopwatch
@@ -214,23 +244,6 @@ function stopStopwatchFunction() {
   minutes.textContent = "00";
   seconds.textContent = "00";
   miliseconds.textContent = "00";
-}
-
-function resetTimer() {
-  ts = 0;
-  tm = 0;
-  th = 0;
-  timerCancelButtonDiv.style.display = "none";
-  timerStartButtonDiv.style.display = "block";
-  timerEndButton.style.display = "none";
-  timeInputDiv.style.display = "block";
-  timerSecondsInput.value = null;
-  timerMinutesInput.value = null;
-  timerHoursInput.value = null;
-  timerHoursDisplay.textContent = "0";
-  timerMinutesDisplay.textContent = "00";
-  timerSecondsDisplay.textContent = "00";
-  alerter.style.display = "none";
 }
 
 startStopwatch.addEventListener("click", startStopwatchFunction);
