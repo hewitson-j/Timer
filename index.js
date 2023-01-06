@@ -42,6 +42,15 @@ function startTimer() {
   let inputMinutes = timerMinutesInput.value;
   let inputHours = timerHoursInput.value;
 
+  if (inputMinutes == "Zelda") {
+    alert("It's a secret to everybody.");
+    response = prompt("Link... Open your eyes...");
+    if (response == "Well excuse me princess")
+      alert("This kind of peace is what all great heroes strive for.");
+    timerMinutesInput.value = null;
+    return;
+  }
+
   inputSeconds = parseInt(inputSeconds);
   inputMinutes = parseInt(inputMinutes);
   inputHours = parseInt(inputHours);
@@ -60,6 +69,9 @@ function startTimer() {
     alert(
       "Time is empty or has invalid characters. Please put in a valid time. \n 1) At least one box must be filled with one number. \n 2) Only acceptable characters are numbers \n 3) No letters, spaces, or special characters allowed."
     );
+    timerSecondsInput.value = null;
+    timerMinutesInput.value = null;
+    timerHoursInput.value = null;
     return;
   }
 
