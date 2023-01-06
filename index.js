@@ -31,6 +31,7 @@ const timerHoursDisplay = document.getElementById("timer-hours");
 const alerter = document.getElementById("alerter");
 
 const timesUp = document.getElementById("timesUp");
+timesUp.volume = 0.25;
 
 // Counters for Timer
 let ts = 0;
