@@ -12,7 +12,7 @@ alarmActive = false;
 
 countdownTimerDiv.style.display = "none";
 stopwatchDiv.style.display = "none";
-alarmDiv.style.display = "none";
+// alarmDiv.style.display = "none";
 
 function activateTimer() {
   timerActive = true;

@@ -11,7 +11,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
-        <title>Timer App</title>
+        <title>Time Keeper</title>
+        <script src="/Scripts/alarm.js" defer></script>
         <script src="/Scripts/stopwatch.js" defer></script>
         <script src="/Scripts/timer.js" defer></script>
         <script src="/Scripts/index.js" defer></script>
@@ -84,13 +85,16 @@
             <div id="alarm-display"> Alarm:
                 <br>
                 <a id="alarm-hour">00</a><a id="alarm-colon">:</a><a id="alarm-minute">00</a> <a id="am-pm">AM</a>
+                <div id="alarm-alerter">
+                    Alarm ringing! Time's up!
+                </div>
             </div>
             <div id="alarm-inputs">
                 <label>Hour</label>
                 <input type="text" id="alarm-hour-input">
                 <label>Minute</label>
                 <input type="text" id="alarm-minute-input">
-                <select>
+                <select id="alarm-am-pm-input">
                     <option value="AM">AM</option>
                     <option value="PM">PM</option>
                 </select>
