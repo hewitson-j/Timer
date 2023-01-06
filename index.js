@@ -234,6 +234,10 @@ function stopwatch() {
 
 // Stop/Reset Stopwatch Function
 function stopStopwatchFunction() {
+  s = 0;
+  m = 0;
+  ms = 0;
+  h = 0;
   endDiv.style.display = "none";
   startDiv.style.display = "block";
   clearInterval(int);
@@ -243,7 +247,7 @@ function stopStopwatchFunction() {
   hours.textContent = "0";
   minutes.textContent = "00";
   seconds.textContent = "00";
-  miliseconds.textContent = "00";
+  miliseconds.textContent = "000";
 }
 
 startStopwatch.addEventListener("click", startStopwatchFunction);

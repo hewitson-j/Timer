@@ -51,7 +51,7 @@ input[type=text] {
     font-size: 15pt;
     border-radius: 10px;
     border: 1px black solid;
-    background: linear-gradient(to right, #f0e890, #90cef0)
+    /* background: linear-gradient(to right, #f0e890, #90cef0) */
 }
 
 #timer-cancel {
