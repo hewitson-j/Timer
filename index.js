@@ -1,3 +1,4 @@
+// Stopwatch Elements
 const startDiv = document.getElementById("start-button");
 const endDiv = document.getElementById("pause-stop-buttons");
 const startStopwatch = document.getElementById("stopwatch-start");
@@ -9,6 +10,133 @@ const minutes = document.getElementById("minutes");
 const hours = document.getElementById("hours");
 const miliseconds = document.getElementById("miliseconds");
 
+// Timer Elements
+const timeInputDiv = document.getElementById("timer-input");
+const timerStartButtonDiv = document.getElementById("timer-set");
+const timerCancelButtonDiv = document.getElementById("timer-cancel");
+const timerEndButtonDiv = document.getElementById("timer-end");
+
+const timerStartButton = document.getElementById("timer-start-button");
+const timerEndButton = document.getElementById("timer-stop-button");
+const timerCancelButton = document.getElementById("timer-cancel-button");
+
+const timerSecondsInput = document.getElementById("timer-seconds-input");
+const timerMinutesInput = document.getElementById("timer-minutes-input");
+const timerHoursInput = document.getElementById("timer-hours-input");
+
+const timerSecondsDisplay = document.getElementById("timer-seconds");
+const timerMinutesDisplay = document.getElementById("timer-minutes");
+const timerHoursDisplay = document.getElementById("timer-hours");
+
+const alerter = document.getElementById("alerter");
+
+// Counters for Timer
+let ts = 0;
+let tm = 0;
+let th = 0;
+let int2 = null;
+
+function startTimer() {
+  let inputSeconds = timerSecondsInput.value;
+  let inputMinutes = timerMinutesInput.value;
+  let inputHours = timerHoursInput.value;
+
+  inputSeconds = parseInt(inputSeconds);
+  inputMinutes = parseInt(inputMinutes);
+  inputHours = parseInt(inputHours);
+
+  if (isNaN(inputSeconds) || isNaN(inputMinutes) || isNaN(inputHours)) {
+    alert(
+      "Values not valid. Please make sure values are filled, and all numbers with no spaces."
+    );
+    return;
+  }
+
+  timeInputDiv.style.display = "none";
+
+  ts = inputSeconds;
+  tm = inputMinutes;
+  th = inputHours;
+
+  if (inputSeconds < 10) {
+    timerSecondsDisplay.textContent = "0" + inputSeconds;
+  } else {
+    timerSecondsDisplay.textContent = inputSeconds;
+  }
+  if (inputMinutes < 10) {
+    timerMinutesDisplay.textContent = "0" + inputMinutes;
+  } else {
+    timerMinutesDisplay.textContent = inputMinutes;
+  }
+  if (inputHours < 10) {
+    timerHoursDisplay.textContent = "0" + inputHours;
+  } else {
+    timerHoursDisplay.textContent = inputHours;
+  }
+
+  timerStartButtonDiv.style.display = "none";
+  timerCancelButtonDiv.style.display = "block";
+
+  int2 = setInterval(countdown, 1000);
+}
+
+function countdown() {
+  ts -= 1;
+  if (ts < 10) {
+    timerSecondsDisplay.textContent = "0" + ts;
+  } else {
+    timerSecondsDisplay.textContent = ts;
+  }
+
+  if (ts == 0 && tm == 0 && th == 0) {
+    timerHoursDisplay.textContent = "0";
+    timerMinutesDisplay.textContent = "00";
+    timerSecondsDisplay.textContent = "00";
+    alerter.style.display = "block";
+    timerCancelButtonDiv.style.display = "none";
+    timerEndButtonDiv.style.display = "block";
+    clearInterval(int2);
+  } else if (ts < 0 && tm > 0) {
+    ts = 59;
+    tm -= 1;
+    timerSecondsDisplay.textContent = ts;
+    if (ts < 10) {
+      timerMinutesDisplay.textContent = "0" + tm;
+    } else {
+      timerMinutesDisplay.textContent = tm;
+    }
+  } else if (tm < 0 && th > 0) {
+    tm = 59;
+    th -= 1;
+    timerMinutesDisplay.textContent = tm;
+    timerHoursDisplay.textContent = th;
+  } else if (th > 0 && ts < 0) {
+    th -= 1;
+    tm = 59;
+    ts = 59;
+    timerSecondsDisplay.textContent = ts;
+    timerMinutesDisplay.textContent = tm;
+    timerHoursDisplay.textContent = th;
+  }
+}
+
+function cancelTimer() {
+  clearInterval(int2);
+  ts = 0;
+  tm = 0;
+  th = 0;
+  timerCancelButtonDiv.style.display = "none";
+  timerStartButtonDiv.style.display = "block";
+  timeInputDiv.style.display = "block";
+  timerSecondsInput.value = null;
+  timerMinutesInput.value = null;
+  timerHoursInput.value = null;
+  timerHoursDisplay.textContent = "0";
+  timerMinutesDisplay.textContent = "00";
+  timerSecondsDisplay.textContent = "00";
+}
+
+// Counters for Stopwatch
 let s = 0;
 let ms = 0;
 let m = 0;
@@ -17,6 +145,7 @@ let h = 0;
 let int = null;
 let paused = false;
 
+// Start Stopwatch Function
 function startStopwatchFunction() {
   startDiv.style.display = "none";
   endDiv.style.display = "block";
@@ -24,6 +153,7 @@ function startStopwatchFunction() {
   int = setInterval(stopwatch, 10);
 }
 
+// Pause Stopwatch Function
 function pauseStopwatchFunction() {
   clearInterval(int);
   if (paused === false) {
@@ -36,6 +166,7 @@ function pauseStopwatchFunction() {
   }
 }
 
+// Stopwatch, called in startStopwatch() that changes interface and increments time values.
 function stopwatch() {
   ms += 10;
   if (ms < 100) {
@@ -71,6 +202,7 @@ function stopwatch() {
   }
 }
 
+// Stop/Reset Stopwatch Function
 function stopStopwatchFunction() {
   endDiv.style.display = "none";
   startDiv.style.display = "block";
@@ -84,6 +216,27 @@ function stopStopwatchFunction() {
   miliseconds.textContent = "00";
 }
 
+function resetTimer() {
+  ts = 0;
+  tm = 0;
+  th = 0;
+  timerCancelButtonDiv.style.display = "none";
+  timerStartButtonDiv.style.display = "block";
+  timerEndButton.style.display = "none";
+  timeInputDiv.style.display = "block";
+  timerSecondsInput.value = null;
+  timerMinutesInput.value = null;
+  timerHoursInput.value = null;
+  timerHoursDisplay.textContent = "0";
+  timerMinutesDisplay.textContent = "00";
+  timerSecondsDisplay.textContent = "00";
+  alerter.style.display = "none";
+}
+
 startStopwatch.addEventListener("click", startStopwatchFunction);
 stopStopwatch.addEventListener("click", stopStopwatchFunction);
 pauseStopwatch.addEventListener("click", pauseStopwatchFunction);
+
+timerStartButton.addEventListener("click", startTimer);
+timerCancelButton.addEventListener("click", cancelTimer);
+timerEndButton.addEventListener("click", resetTimer);

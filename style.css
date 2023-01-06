@@ -30,3 +30,34 @@ input[type=button] {
 #pause-stop-buttons {
     display: none;
 }
+
+#countdown-timer {
+    padding-top: 3rem;
+    display: block;
+    text-align: center;
+    align-items: center;
+    font-family: 'Roboto Condensed';
+    font-size: 30pt;
+}
+
+input[type=text] {
+    padding: 1rem;
+    font-family: 'Roboto Condensed';
+    font-size: 15pt;
+}
+
+#timer-cancel {
+    display: none;
+}
+
+#timer-end {
+    display: none;
+}
+
+#alerter {
+    display: none;
+    text-align: center;
+    align-items: center;
+    font-family: 'Roboto Condensed';
+    font-size: 30pt;
+}
