@@ -11,49 +11,62 @@
         <title>Timer App</title>
         <script src="stopwatch.js" defer></script>
         <script src="timer.js" defer></script>
+        <script src="index.js" defer></script>
     </head>
     <body>
+        <div id="mode">
+            <label id="mode-label">Choose mode:</label>
+            <br>
+            <input type="button" id="timer-mode" value="Set Timer">
+            <input type="button" id="stopwatch-mode" value="Stopwatch">
+            <input type="button" id="alarm-mode" value="Set an Alarm">
+        </div>
+
         <audio id="timesUp" src="alarm.mp3" preload="auto"></audio>
-        <div id="stopwatch-body">Stopwatch: 
-            <br>
-            <a id="hours">0</a>:<a id="minutes">00</a>:<a id="seconds">00</a>:<a id="miliseconds">000</a>
-        </div>
-        <div class="buttons" id="start-button">
-            <input type="button" id="stopwatch-start" value="Start">
-        </div>
-        <div class="buttons" id="pause-stop-buttons">
-            <input type="button" id="stopwatch-pause" value="Pause">
-            <input type="button" id="stopwatch-stop" value="Stop">
+        <div id="stopwatch-div">
+            <div id="stopwatch-body">Stopwatch: 
+                <br>
+                <a id="hours">0</a>:<a id="minutes">00</a>:<a id="seconds">00</a>:<a id="miliseconds">000</a>
+            </div>
+            <div class="buttons" id="start-button">
+                <input type="button" id="stopwatch-start" value="Start">
+            </div>
+            <div class="buttons" id="pause-stop-buttons">
+                <input type="button" id="stopwatch-pause" value="Pause">
+                <input type="button" id="stopwatch-stop" value="Stop">
+            </div>
         </div>
         <br>
         <br>
-        <div id="countdown-timer">
-            <div id="timer-body">
-                Countdown Timer:
+        <div id="countdown-div">
+            <div id="countdown-timer">
+                <div id="timer-body">
+                    Countdown Timer:
+                    <br>
+                    <a id="timer-hours">0</a>:<a id="timer-minutes">00</a>:<a id="timer-seconds">00</a>
+                    <br>
+                    <br>
+                    <div id="alerter">Time's up!</div>
+                </div>
                 <br>
-                <a id="timer-hours">0</a>:<a id="timer-minutes">00</a>:<a id="timer-seconds">00</a>
-                <br>
-                <br>
-                <div id="alerter">Time's up!</div>
+                <div id="timer-input">
+                    <label>Hours</label>
+                    <input type="text" id="timer-hours-input" placeholder="0">
+                    <label>Minutes</label>
+                    <input type="text" id="timer-minutes-input" placeholder="00">
+                    <label>Seconds</label>
+                    <input type="text" id="timer-seconds-input" placeholder="00">
+                </div>
             </div>
-            <br>
-            <div id="timer-input">
-                <label>Hours</label>
-                <input type="text" id="timer-hours-input" placeholder="0">
-                <label>Minutes</label>
-                <input type="text" id="timer-minutes-input" placeholder="00">
-                <label>Seconds</label>
-                <input type="text" id="timer-seconds-input" placeholder="00">
+            <div class="buttons" id="timer-set">
+                <input type="button" id="timer-start-button" value="Start Timer">
             </div>
-        </div>
-        <div class="buttons" id="timer-set">
-            <input type="button" id="timer-start-button" value="Start Timer">
-        </div>
-        <div class="buttons" id="timer-cancel">
-            <input type="button" id="timer-cancel-button" value="Cancel Timer">
-        </div>
-        <div class="buttons" id="timer-end">
-            <input type="button" id="timer-stop-button" value="Stop Timer">
+            <div class="buttons" id="timer-cancel">
+                <input type="button" id="timer-cancel-button" value="Cancel Timer">
+            </div>
+            <div class="buttons" id="timer-end">
+                <input type="button" id="timer-stop-button" value="Stop Timer">
+            </div>
         </div>
     </body>
 </html>

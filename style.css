@@ -1,5 +1,22 @@
 body {
-    background: linear-gradient(to right, red, yellow, green, blue)
+    background: linear-gradient(to right, aliceblue, skyblue, skyblue, skyblue, aliceblue)
+}
+
+#mode {
+    display: block;
+    text-align: center;
+    margin: auto;
+    font-family: 'Roboto Condensed';
+    font-size: 30pt;
+    margin-top: 5rem;
+}
+
+select {
+    padding: 1.5rem;
+    margin: .5rem;
+    font-family: 'Roboto Condensed';
+    font-size: 20pt;
+    border-radius: 10px;
 }
 
 #stopwatch-body {
