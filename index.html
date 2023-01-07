@@ -4,12 +4,20 @@
         <meta name="description" content="React Clock">
         <meta name="keywords" content="React Clock, React, Clock">
         <meta name="author" content="Jacob Hewitson">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
         <meta http-equiv='cache-control' content='no-cache'> 
         <meta http-equiv='expires' content='0'> 
         <meta http-equiv='pragma' content='no-cache'>
+
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+        <link rel="icon" href="https://i.pinimg.com/originals/9a/22/b7/9a22b792f2b21a0c7832de476895704c.png">
         <link rel="stylesheet" href="style.css">
         <title>Time Keeper</title>
         <script src="/Scripts/alarm.js" defer></script>
@@ -18,6 +26,25 @@
         <script src="/Scripts/index.js" defer></script>
     </head>
     <body>
+
+        <div id="opening-header">
+            Time Keeper App
+            <br>
+            <br>
+            <div id="mm-intro">
+                I'm Miss Miliseconds and I'll be happy to help you today :)
+            </div>
+            <br>
+            <br>
+            <input type="button" id="open-app" value="Begin">
+            <br>
+            <br>
+            <br>
+            <hr>
+            <div id="copyright-info">
+                Copyright © Jacob Hewitson 2022
+            </div>
+        </div>
         <!-- Mode Select Interface -->
         <div id="mode">
             <label id="mode-label">Choose mode:</label>
@@ -85,9 +112,12 @@
         <div id="alarm-div">
             <div id="alarm-display"> Alarm:
                 <br>
-                <a id="alarm-hour">00</a><a id="alarm-colon">:</a><a id="alarm-minute">00</a> <a id="am-pm">AM</a>
-                <div id="alarm-alerter">
-                    Alarm ringing! Time's up!
+                <div id="alarm-numbers">
+                    <b><a id="alarm-hour">00</a><a id="alarm-colon">:</a><a id="alarm-minute">00</a> <a id="am-pm">AM</a></b>
+                    <div id="alarm-alerter">
+                        <br>
+                        Alarm ringing! Time's up!
+                    </div>
                 </div>
             </div>
             <div id="alarm-inputs">

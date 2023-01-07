@@ -6,13 +6,23 @@ countdownTimerDiv = document.getElementById("countdown-div");
 stopwatchDiv = document.getElementById("stopwatch-div");
 alarmDiv = document.getElementById("alarm-div");
 
+openingHeader = document.getElementById("opening-header");
+modes = document.getElementById("mode");
+openAppButton = document.getElementById("open-app");
+
 timerActive = false;
 stopwatchActive = false;
 alarmActive = false;
 
+modes.style.display = "none";
 countdownTimerDiv.style.display = "none";
 stopwatchDiv.style.display = "none";
-// alarmDiv.style.display = "none";
+alarmDiv.style.display = "none";
+
+function begin() {
+  openingHeader.style.display = "none";
+  modes.style.display = "block";
+}
 
 function activateTimer() {
   timerActive = true;
@@ -56,3 +66,4 @@ function activateAlarm() {
 timerButton.addEventListener("click", activateTimer);
 stopwatchButton.addEventListener("click", activateStopwatch);
 alarmButton.addEventListener("click", activateAlarm);
+openAppButton.addEventListener("click", begin);

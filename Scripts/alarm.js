@@ -19,8 +19,6 @@ alarmMinuteDisplay = document.getElementById("alarm-minute");
 alarmColonDisplay = document.getElementById("alarm-colon");
 alarmAmPmDisplay = document.getElementById("am-pm");
 
-// TODO
-// Not getting alarm sound, why?
 alarmRingtone = document.getElementById("timesUp");
 alarmRingtone.volume = 0.25;
 
