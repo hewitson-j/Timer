@@ -8,10 +8,7 @@ startButton = document.getElementById("alarm-start-button");
 cancelButton = document.getElementById("alarm-cancel-button");
 stopButton = document.getElementById("alarm-stop-button");
 
-// Not being manipulated properly
-// startButtonDisplay = document.getElementById("alarm-start");
-// cancelButtonDisplay = document.getElementById("alarm-cancel");
-// stopButtonDisplay = document.getElementById("alarm-end");
+inputsInterface = document.getElementById("alarm-inputs");
 
 startButtonDiv = document.getElementById("alarm-set");
 cancelButtonDiv = document.getElementById("alarm-cancel");
@@ -24,14 +21,17 @@ alarmAmPmDisplay = document.getElementById("am-pm");
 
 // TODO
 // Not getting alarm sound, why?
-// timesUp = document.getElementById("timesUp");
-// timesUp.volume = 0.25;
+alarmRingtone = document.getElementById("timesUp");
+alarmRingtone.volume = 0.25;
 
 alarmAlerter.style.display = "none";
 
 today = new Date();
 hourInput.placeholder = today.getHours();
 minuteInput.placeholder = today.getMinutes();
+if (today.getMinutes() < 10) {
+  minuteInput.placeholder = "0" + today.getMinutes();
+}
 
 if (today.getHours() > 12) {
   hourInput.placeholder = today.getHours() - 12;
@@ -52,7 +52,10 @@ hi = null;
 mi = null;
 ampmi = null;
 alarmTicking = null;
+alarmRinging = null;
+repeat = null;
 
+// Set Alarm Function
 function setAlarm() {
   hi = parseInt(hourInput.value);
   mi = parseInt(minuteInput.value);
@@ -85,6 +88,10 @@ function setAlarm() {
   startButtonDiv.style.display = "none";
   cancelButtonDiv.style.display = "block";
 
+  hourInput.value = null;
+  minuteInput.value = null;
+  inputsInterface.style.display = "none";
+
   alarmTicking = setInterval(runClock, 1000);
 }
 
@@ -102,14 +109,47 @@ function runClock() {
   }
 
   if (alarmHours == displayHours && displayMinutes == alarmMinutes) {
-    // soundPlaying = setInterval(() => {
-    //   timesUp.currentTime = 0;
-    //   timesUp.play();
-    // }, 7500);
+    alarmRingtone.play();
+    clearInterval(alarmTicking);
+    repeat = setInterval(() => {
+      alarmRingtone.currentTime = 0;
+      alarmRingtone.play();
+    }, 7500);
+
     alarmAlerter.style.display = "block";
     cancelButtonDiv.style.display = "none";
     stopButtonDiv.style.display = "block";
   }
 }
 
+function cancelAlarm() {
+  clearInterval(alarmTicking);
+  alarmHourDisplay.textContent = "00";
+  alarmMinuteDisplay.textContent = "00";
+  alarmAmPmDisplay.textContent = "AM";
+
+  cancelButtonDiv.style.display = "none";
+  startButtonDiv.style.display = "block";
+  inputsInterface.style.display = "block";
+}
+
+function stopAlarm() {
+  clearInterval(alarmTicking);
+  clearInterval(repeat);
+  alarmRingtone.pause();
+  alarmHourDisplay.textContent = "00";
+  alarmMinuteDisplay.textContent = "00";
+  alarmAmPmDisplay.textContent = "AM";
+
+  clearInterval(alarmRinging);
+
+  alarmAlerter.style.display = "none";
+
+  stopButtonDiv.style.display = "none";
+  startButtonDiv.style.display = "block";
+  inputsInterface.style.display = "block";
+}
+
 startButton.addEventListener("click", setAlarm);
+cancelButton.addEventListener("click", cancelAlarm);
+stopButton.addEventListener("click", stopAlarm);
